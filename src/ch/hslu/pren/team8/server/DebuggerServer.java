@@ -1,5 +1,7 @@
 package ch.hslu.pren.team8.server;
 
+import ch.hslu.pren.team8.gui.DebuggerGui;
+
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -11,9 +13,11 @@ public class DebuggerServer implements Runnable {
     private Thread thread;
     private ServerSocket serverSocket;
     Socket server;
+    private DebuggerGui frame;
 
-    public DebuggerServer() {
+    public DebuggerServer(DebuggerGui frame) {
 
+        this.frame = frame;
         if (thread == null) {
             System.out.println("start thread");
             thread = new Thread(this);
@@ -26,7 +30,7 @@ public class DebuggerServer implements Runnable {
         try (ServerSocket serverSocket = new ServerSocket(6784)) {
             while (true) {
                 server = serverSocket.accept();
-                new DebuggerServerHandler(server);
+                new DebuggerServerHandler(server,frame);
             }
         } catch (Exception e) {
 

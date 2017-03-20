@@ -15,4 +15,9 @@ public class LogMessageText extends LogMessageBase implements Serializable {
     public void setLogText(String logText) {
         LogText = logText;
     }
+
+    @Override
+    public String toString() {
+        return LogText;
+    }
 }
