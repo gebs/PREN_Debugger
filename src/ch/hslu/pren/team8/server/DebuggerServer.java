@@ -10,6 +10,7 @@ import java.net.Socket;
  */
 public class DebuggerServer implements Runnable {
 
+    private static int PORT =6955;
     private Thread thread;
     private ServerSocket serverSocket;
     Socket server;
@@ -22,12 +23,14 @@ public class DebuggerServer implements Runnable {
             System.out.println("start thread");
             thread = new Thread(this);
         }
+        new DebuggerBoadcaster(PORT);
         thread.start();
+
     }
 
     @Override
     public void run() {
-        try (ServerSocket serverSocket = new ServerSocket(6784)) {
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             while (true) {
                 server = serverSocket.accept();
                 new DebuggerServerHandler(server,frame);
