@@ -1,4 +1,4 @@
-package ch.hslu.pren.team8.common;
+package ch.hslu.pren.team8.debugger;
 
 /**
  * Created by gebs on 3/17/17.

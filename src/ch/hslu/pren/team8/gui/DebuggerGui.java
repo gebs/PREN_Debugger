@@ -1,13 +1,12 @@
 package ch.hslu.pren.team8.gui;
 
-import ch.hslu.pren.team8.common.ImageType;
-import ch.hslu.pren.team8.common.LogMessageImage;
-import ch.hslu.pren.team8.common.LogMessageText;
+import ch.hslu.pren.team8.debugger.ImageType;
+import ch.hslu.pren.team8.debugger.LogMessageImage;
+import ch.hslu.pren.team8.debugger.LogMessageText;
 import ch.hslu.pren.team8.server.DebuggerServer;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * Created by gebs on 3/17/17.
@@ -46,20 +45,18 @@ public class DebuggerGui {
 
     public synchronized void LogImageMessage(LogMessageImage msg) {
 
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+        SwingUtilities.invokeLater(() -> {
 
-                if (msg.getImageType() == ImageType.ORIGINAL) {
-                    olabel.setIcon(new ImageIcon(msg.getImage()));
-                    //pImageO.removeAll();
-                    //)  pImageO.add(label);
-                } else {
-                    pImageEdit.removeAll();
-                   // pImageEdit.add(label);
-                }
-
-
+            if (msg.getImageType() == ImageType.ORIGINAL) {
+               olabel.setIcon(new ImageIcon(msg.getImage()));
+                //pImageO.removeAll();
+                //)  pImageO.add(label);
+            } else {
+                //pImageEdit.removeAll();
+               // pImageEdit.add(label);
             }
+
+
         });
     }
 }

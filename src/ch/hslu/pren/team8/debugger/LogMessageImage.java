@@ -1,4 +1,6 @@
-package ch.hslu.pren.team8.common;
+package ch.hslu.pren.team8.debugger;
+
+import com.sun.istack.internal.Nullable;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -13,26 +15,40 @@ import java.io.Serializable;
 public class LogMessageImage extends LogMessageBase implements Serializable {
     transient BufferedImage image;
     byte[] imageBytes;
-    int imageSize;
     ImageType imageType;
+
+    public LogMessageImage(LogLevel logLevel,MessageType messageType, BufferedImage image,ImageType imageType){
+        super(logLevel,messageType);
+        this.image = image;
+        this.imageType = imageType;
+        this.imageBytes = convertBufferedImagetoByteArray(image);
+    }
+
+
+
 
     public void setImage(BufferedImage image) {
         this.image = image;
+    }
+
+    @Nullable
+    private byte[] convertBufferedImagetoByteArray(BufferedImage img) {
         ByteArrayOutputStream bScrn = new ByteArrayOutputStream();
         try {
-            ImageIO.write(this.image,"JPG",bScrn);
+            ImageIO.write(img, "JPG", bScrn);
             byte[] imgByte = bScrn.toByteArray();
             bScrn.flush();
             bScrn.close();
-            this.imageSize = bScrn.size();
-            this.imageBytes = imgByte;
+            return imgByte;
+
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
-
     }
 
     public BufferedImage getImage() {
+
         if (image == null && imageBytes.length > 0)
         {
             ByteArrayInputStream bais = new ByteArrayInputStream(imageBytes);
@@ -43,16 +59,10 @@ public class LogMessageImage extends LogMessageBase implements Serializable {
             }
 
         }
-        return image;
+        else
+            return  image;
     }
 
-    public int getImageSize() {
-        return imageSize;
-    }
-
-    public void setImageSize(int imageSize) {
-        this.imageSize = imageSize;
-    }
     public ImageType getImageType() {
         return imageType;
     }

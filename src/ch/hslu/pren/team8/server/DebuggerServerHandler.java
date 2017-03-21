@@ -1,8 +1,8 @@
 package ch.hslu.pren.team8.server;
 
-import ch.hslu.pren.team8.common.LogMessageBase;
-import ch.hslu.pren.team8.common.LogMessageImage;
-import ch.hslu.pren.team8.common.LogMessageText;
+import ch.hslu.pren.team8.debugger.LogMessageBase;
+import ch.hslu.pren.team8.debugger.LogMessageImage;
+import ch.hslu.pren.team8.debugger.LogMessageText;
 import ch.hslu.pren.team8.gui.DebuggerGui;
 
 import java.io.IOException;
