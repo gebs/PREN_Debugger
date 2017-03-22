@@ -11,6 +11,7 @@ import java.net.Socket;
 public class DebuggerServer implements Runnable {
 
     private static int PORT =6955;
+    private  static final boolean SAVEIMAGE = false;
     private Thread thread;
     private ServerSocket serverSocket;
     Socket server;

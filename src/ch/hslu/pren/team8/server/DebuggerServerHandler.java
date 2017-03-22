@@ -5,6 +5,8 @@ import ch.hslu.pren.team8.debugger.LogMessageImage;
 import ch.hslu.pren.team8.debugger.LogMessageText;
 import ch.hslu.pren.team8.gui.DebuggerGui;
 
+import javax.imageio.ImageIO;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
@@ -15,11 +17,13 @@ import java.net.Socket;
 public class DebuggerServerHandler implements Runnable {
     private Thread thread;
     private Socket client;
+    private boolean saveImage;
     DebuggerGui gui;
 
-    public DebuggerServerHandler(final Socket client, final DebuggerGui gui){
+    public DebuggerServerHandler(final Socket client, final DebuggerGui gui, final boolean saveImage){
         this.client = client;
         this.gui = gui;
+        this.saveImage = saveImage;
         if (thread == null){
             thread = new Thread(this);
         }
@@ -35,6 +39,10 @@ public class DebuggerServerHandler implements Runnable {
             switch (base.getType()){
                 case ImageMessage:
                     gui.LogImageMessage((LogMessageImage)base);
+                    if (saveImage){
+                        File file = new File(base.getLogDate() + "_" + ((LogMessageImage) base).getImageType() + "_Image.png");
+                        ImageIO.write(((LogMessageImage) base).getImage(),"png",file);
+                    }
                     break;
                 case LogMessage:
                     gui.LogTextMessage((LogMessageText)base);
