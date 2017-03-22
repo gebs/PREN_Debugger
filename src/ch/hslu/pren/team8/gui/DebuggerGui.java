@@ -6,6 +6,9 @@ import ch.hslu.pren.team8.debugger.LogMessageText;
 import ch.hslu.pren.team8.server.DebuggerServer;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 /**
@@ -20,27 +23,30 @@ public class DebuggerGui {
     private JPanel TextPanel;
     ImageIcon oicon = new ImageIcon();
     JLabel olabel = new JLabel();
+    JLabel elabel = new JLabel();
     DefaultListModel<LogMessageText> listModel;
     private int index;
 
 
     public DebuggerGui() {
-        //this.setSize(800, 600);
-        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        //setLocationRelativeTo(null);
-
-
         listModel = new DefaultListModel<LogMessageText>();
         lTextLog.setModel(listModel);
         pImageO.setLayout(new GridLayout(1, 1));
         pImageEdit.setLayout(new GridLayout(1, 1));
+        Border border = olabel.getBorder();
+        Border margin = new EmptyBorder(10,30,10,30);
+        olabel.setBorder(new CompoundBorder(border,margin));
         pImageO.add(olabel);
+
+        Border border1 = elabel.getBorder();
+        Border margin1 = new EmptyBorder(10,30,10,30);
+        elabel.setBorder(new CompoundBorder(border1,margin1));
+        pImageEdit.add(elabel);
         new DebuggerServer(this);
     }
 
     public synchronized void LogTextMessage(LogMessageText msg) {
         listModel.insertElementAt(msg, 0);
-        lTextLog.ensureIndexIsVisible(index);
     }
 
     public synchronized void LogImageMessage(LogMessageImage msg) {
@@ -49,11 +55,8 @@ public class DebuggerGui {
 
             if (msg.getImageType() == ImageType.ORIGINAL) {
                olabel.setIcon(new ImageIcon(msg.getImage()));
-                //pImageO.removeAll();
-                //)  pImageO.add(label);
             } else {
-                //pImageEdit.removeAll();
-               // pImageEdit.add(label);
+                elabel.setIcon(new ImageIcon(msg.getImage()));
             }
 
 

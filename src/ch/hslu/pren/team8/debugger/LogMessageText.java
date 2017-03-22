@@ -1,6 +1,7 @@
 package ch.hslu.pren.team8.debugger;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by gebs on 3/17/17.
@@ -23,6 +24,7 @@ public class LogMessageText extends LogMessageBase implements Serializable {
 
     @Override
     public String toString() {
-        return logText;
+        SimpleDateFormat dt = new SimpleDateFormat("dd.mm.yyyy hh:mm:ss");
+        return dt.format(super.getLogDate()) + " - " +  logText;
     }
 }

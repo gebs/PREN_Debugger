@@ -7,11 +7,11 @@
     </constraints>
     <properties>
       <minimumSize width="800" height="600"/>
-      <preferredSize width="800" height="600"/>
+      <preferredSize width="1600" height="1000"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="ce67e" binding="ImagePanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="ce67e" binding="ImagePanel" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -22,7 +22,7 @@
           <grid id="750ed" binding="pImageO" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
             <border type="none"/>
@@ -31,7 +31,7 @@
           <grid id="8a79a" binding="pImageEdit" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
             <border type="none"/>
@@ -39,10 +39,18 @@
           </grid>
           <component id="e342d" class="javax.swing.JLabel">
             <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Bild von Kamera"/>
+            </properties>
+          </component>
+          <component id="5df84" class="javax.swing.JLabel">
+            <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="This is a Test Label"/>
+              <text value="Bearbeitetes Bild"/>
             </properties>
           </component>
         </children>
@@ -55,19 +63,25 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="3bd93" class="javax.swing.JList" binding="lTextLog">
+          <scrollpane id="a1efc">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="50"/>
-              </grid>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties>
-              <model>
-                <item value="LogText"/>
-              </model>
-              <selectionMode value="0"/>
-            </properties>
-          </component>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="3bd93" class="javax.swing.JList" binding="lTextLog">
+                <constraints/>
+                <properties>
+                  <autoscrolls value="false"/>
+                  <model>
+                    <item value="LogText"/>
+                  </model>
+                  <selectionMode value="0"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
         </children>
       </grid>
     </children>
