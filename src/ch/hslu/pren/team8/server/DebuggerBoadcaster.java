@@ -9,8 +9,8 @@ import java.net.UnknownHostException;
  * Created by gebs on 3/20/17.
  */
 public class DebuggerBoadcaster implements Runnable {
-    private static final String DISCOVER_MESSAGE = "LOF_DISCOVER"; //Message for receiving broadcast from GameFinder (same as in Class GameFinder)
-    private static final String RESPONSE_MESSAGE = "LOF_RESPONSE"; //Message for sending broadcast to GameFinder (same as in Class GameFinder)
+    private static final String DISCOVER_MESSAGE = "PREN_T8_DISCOVER"; //Message for receiving broadcast from GameFinder (same as in Class GameFinder)
+    private static final String RESPONSE_MESSAGE = "PREN_T8_RESPONSE"; //Message for sending broadcast to GameFinder (same as in Class GameFinder)
     private static final String BROADCAST_IP = "255.255.255.255"; //Broadcast IP
     private static final int BYTE_DATA_SIZE = 1024; //size of the UDP packets
 
