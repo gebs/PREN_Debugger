@@ -36,7 +36,7 @@ public class DebuggerServer implements Runnable {
                 server = serverSocket.accept();
                 // @TODO: Adi, ich habe hier den dritte Parameter (false) hinzugefügt, weil der Konstruktor diesen offenbar erwartet...
                 // Falls das nicht korrekt ist bzw. dynamisch(er) gestaltet werden soll: bitte ruhig ändern :-)
-                new DebuggerServerHandler(server,frame,false);
+                new DebuggerServerHandler(server,frame,SAVEIMAGE);
             }
         } catch (Exception e) {
             e.printStackTrace();
