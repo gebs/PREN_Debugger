@@ -13,6 +13,7 @@ import java.io.Serializable;
  * Created by gebs on 3/17/17.
  */
 public class LogMessageImage extends LogMessageBase implements Serializable {
+    static final long serialVersionUID = -7588980448693010399L;
     private transient BufferedImage image;
     private byte[] imageBytes;
     private ImageType imageType;

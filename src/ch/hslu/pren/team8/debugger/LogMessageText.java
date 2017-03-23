@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
  * Created by gebs on 3/17/17.
  */
 public class LogMessageText extends LogMessageBase implements Serializable {
+    static final long serialVersionUID = -7588980448693010399L;
     private String logText;
 
     public LogMessageText(LogLevel logLevel,MessageType messageType,String logText){
