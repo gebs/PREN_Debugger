@@ -18,7 +18,7 @@ public class DebuggerServerHandler implements Runnable {
     private Thread thread;
     private Socket client;
     private boolean saveImage;
-    DebuggerGui gui;
+    private DebuggerGui gui;
 
     public DebuggerServerHandler(final Socket client, final DebuggerGui gui, final boolean saveImage){
         this.client = client;
@@ -28,8 +28,6 @@ public class DebuggerServerHandler implements Runnable {
             thread = new Thread(this);
         }
         thread.start();
-
-
     }
 
     @Override
@@ -49,11 +47,7 @@ public class DebuggerServerHandler implements Runnable {
                     break;
             }
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
+        catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

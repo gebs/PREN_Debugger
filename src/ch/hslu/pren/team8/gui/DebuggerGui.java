@@ -22,9 +22,9 @@ public class DebuggerGui {
     private JPanel ImagePanel;
     private JPanel TextPanel;
     ImageIcon oicon = new ImageIcon();
-    JLabel olabel = new JLabel();
-    JLabel elabel = new JLabel();
-    DefaultListModel<LogMessageText> listModel;
+    private JLabel olabel = new JLabel();
+    private JLabel elabel = new JLabel();
+    private DefaultListModel<LogMessageText> listModel;
     private int index;
 
 

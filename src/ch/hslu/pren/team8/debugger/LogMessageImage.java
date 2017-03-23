@@ -13,18 +13,16 @@ import java.io.Serializable;
  * Created by gebs on 3/17/17.
  */
 public class LogMessageImage extends LogMessageBase implements Serializable {
-    transient BufferedImage image;
-    byte[] imageBytes;
-    ImageType imageType;
+    private transient BufferedImage image;
+    private byte[] imageBytes;
+    private ImageType imageType;
 
-    public LogMessageImage(LogLevel logLevel,MessageType messageType, BufferedImage image,ImageType imageType){
-        super(logLevel,messageType);
+    public LogMessageImage(LogLevel logLevel, MessageType messageType, BufferedImage image, ImageType imageType) {
+        super(logLevel, messageType);
         this.image = image;
         this.imageType = imageType;
         this.imageBytes = convertBufferedImagetoByteArray(image);
     }
-
-
 
 
     public void setImage(BufferedImage image) {
@@ -49,8 +47,7 @@ public class LogMessageImage extends LogMessageBase implements Serializable {
 
     public BufferedImage getImage() {
 
-        if (image == null && imageBytes.length > 0)
-        {
+        if (image == null && imageBytes.length > 0) {
             ByteArrayInputStream bais = new ByteArrayInputStream(imageBytes);
             try {
                 return image = ImageIO.read(bais);
@@ -58,9 +55,8 @@ public class LogMessageImage extends LogMessageBase implements Serializable {
                 throw new RuntimeException(e);
             }
 
-        }
-        else
-            return  image;
+        } else
+            return image;
     }
 
     public ImageType getImageType() {

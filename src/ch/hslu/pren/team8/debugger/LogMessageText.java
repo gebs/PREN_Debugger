@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
  * Created by gebs on 3/17/17.
  */
 public class LogMessageText extends LogMessageBase implements Serializable {
-    String logText;
+    private String logText;
 
     public LogMessageText(LogLevel logLevel,MessageType messageType,String logText){
         super(logLevel,messageType);

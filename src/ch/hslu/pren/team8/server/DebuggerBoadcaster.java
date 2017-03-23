@@ -14,7 +14,7 @@ public class DebuggerBoadcaster implements Runnable {
     private static final String BROADCAST_IP = "255.255.255.255"; //Broadcast IP
     private static final int BYTE_DATA_SIZE = 1024; //size of the UDP packets
 
-    Thread thread;
+    private Thread thread;
     private int port; //port for datagram socket
     private byte[] sendData = new byte[BYTE_DATA_SIZE]; //data of the UDP packet (sending)
     private byte[] receiveData = new byte[BYTE_DATA_SIZE]; //data of the UDP packet (receiving)

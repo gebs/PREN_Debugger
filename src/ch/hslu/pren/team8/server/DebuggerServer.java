@@ -14,7 +14,7 @@ public class DebuggerServer implements Runnable {
     private  static final boolean SAVEIMAGE = false;
     private Thread thread;
     private ServerSocket serverSocket;
-    Socket server;
+    private Socket server;
     private DebuggerGui frame;
 
     public DebuggerServer(DebuggerGui frame) {
@@ -34,10 +34,12 @@ public class DebuggerServer implements Runnable {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             while (true) {
                 server = serverSocket.accept();
-                new DebuggerServerHandler(server,frame);
+                // @TODO: Adi, ich habe hier den dritte Parameter (false) hinzugefügt, weil der Konstruktor diesen offenbar erwartet...
+                // Falls das nicht korrekt ist bzw. dynamisch(er) gestaltet werden soll: bitte ruhig ändern :-)
+                new DebuggerServerHandler(server,frame,false);
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
 
     }

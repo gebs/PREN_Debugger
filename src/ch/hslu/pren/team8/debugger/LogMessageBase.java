@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by gebs on 3/17/17.
  */
-public class LogMessageBase implements Serializable{
+public class LogMessageBase implements Serializable {
     private MessageType type;
     private Date logDate;
     private LogLevel logLevel;
@@ -14,7 +14,8 @@ public class LogMessageBase implements Serializable{
     public LogMessageBase() {
         this.logDate = new Date();
     }
-    public LogMessageBase(LogLevel logLevel, MessageType type){
+
+    public LogMessageBase(LogLevel logLevel, MessageType type) {
         this.logLevel = logLevel;
         this.type = type;
         this.logDate = new Date();
