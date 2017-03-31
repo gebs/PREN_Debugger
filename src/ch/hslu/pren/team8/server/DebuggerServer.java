@@ -12,6 +12,8 @@ public class DebuggerServer implements Runnable {
 
     private static int PORT = 6955;
     private static final boolean SAVEIMAGE = false;
+
+    private static final boolean SAVEEDITIMAGE = false;
     private Thread thread;
     private ServerSocket serverSocket;
     private Socket server;
@@ -34,7 +36,7 @@ public class DebuggerServer implements Runnable {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             while (true) {
                 server = serverSocket.accept();
-                new DebuggerServerHandler(server, frame, SAVEIMAGE);
+                new DebuggerServerHandler(server, frame, SAVEIMAGE,SAVEEDITIMAGE);
             }
         } catch (Exception e) {
             e.printStackTrace();

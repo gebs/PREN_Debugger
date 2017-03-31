@@ -1,5 +1,6 @@
 package ch.hslu.pren.team8.server;
 
+import ch.hslu.pren.team8.debugger.ImageType;
 import ch.hslu.pren.team8.debugger.LogMessageBase;
 import ch.hslu.pren.team8.debugger.LogMessageImage;
 import ch.hslu.pren.team8.debugger.LogMessageText;
@@ -18,12 +19,14 @@ public class DebuggerServerHandler implements Runnable {
     private Thread thread;
     private Socket client;
     private boolean saveImage;
+    private boolean saveEditImage;
     private DebuggerGui gui;
 
-    public DebuggerServerHandler(final Socket client, final DebuggerGui gui, final boolean saveImage){
+    public DebuggerServerHandler(final Socket client, final DebuggerGui gui, final boolean saveImage, final boolean saveeditImage){
         this.client = client;
         this.gui = gui;
         this.saveImage = saveImage;
+        this.saveEditImage = saveeditImage;
         if (thread == null){
             thread = new Thread(this);
         }
@@ -37,7 +40,8 @@ public class DebuggerServerHandler implements Runnable {
             switch (base.getType()){
                 case ImageMessage:
                     gui.LogImageMessage((LogMessageImage)base);
-                    if (saveImage){
+                    if ((saveImage && ((LogMessageImage) base).getImageType() == ImageType.ORIGINAL)
+                            || saveEditImage && ((LogMessageImage) base).getImageType() == ImageType.EDITED){
                         File file = new File(base.getLogDate() + "_" + ((LogMessageImage) base).getImageType() + "_Image.png");
                         ImageIO.write(((LogMessageImage) base).getImage(),"png",file);
                     }
